@@ -144,6 +144,32 @@ cp "$PWD/kitty.conf" "$kitty_config_dir/kitty.conf"
 
 其中 `Ctrl++` 表示 Ctrl 加上加号键。这些操作作用于当前原生窗口，包含该窗口内的标签页和分屏，不会写回配置文件。
 
+### 查找终端内容
+
+- `Ctrl+F`：在分页器中查找当前分屏的屏幕内容和已保留的历史输出。
+
+此快捷键使用 kitty 的 [`search_scrollback` 动作](https://sw.kovidgoyal.net/kitty/actions/#action-search_scrollback)，默认分页器为 `less`，需要系统已安装该命令。如果当前选中了文本，会自动搜索选中的内容；没有选中文本时，输入要查找的内容并按 `Enter`。
+
+进入 `less` 后，可使用以下按键：
+
+- `/`：输入新的搜索内容，按 `Enter` 开始搜索。
+- `n` / `N`：按搜索方向查找下一个匹配 / 反向查找匹配。
+- `q`：退出分页器，返回原终端。
+
+`Ctrl+F` 会由 kitty 处理，终端内的 shell 或编辑器不再收到这个组合键。
+
+### 查找文件
+
+- `Ctrl+Shift+F`：打开 `choose-files`，按文件名模糊查找当前工作目录及其子目录中的文件。
+
+输入文件名中的几个字符即可筛选结果，选择后会将文件路径插入原终端的输入位置。可以先在 shell 中输入 `cat `、`nvim ` 等命令，再用此快捷键选择文件。详细用法见 [choose-files 官方文档](https://sw.kovidgoyal.net/kitty/kittens/choose-files/)。
+
+- `↑` / `↓`：切换选中的结果。
+- `Enter`：确认文件并插入路径。
+- `Tab`：进入选中的目录。
+- `Shift+Tab`：返回上一级目录。
+- `Esc` / `Ctrl+C`：取消选择并返回终端。
+
 ### 滚动与命令提示符跳转
 
 - `Shift+PageUp`：向上滚动一页。
